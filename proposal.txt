@@ -1,0 +1,137 @@
+Project Description:
+    The name of my term project is “Advanced Filler” and it is based off the 
+    Apple Game Pigeon game “Filler”. The object of the game is to acquire more 
+    cells into your "blob" than your opponent before all cells have been added 
+    onto blobs and the game is over. In each turn a player gets 4 color options 
+    and after choosing one, any cell of the chosen color that is touching the 
+    player's current blob is added onto their blob. It is advanced because there 
+    are power ups ("skip" which skips the other players turn, "remove" which 
+    removes two color options from the opponent's next turn, "+1" which adds 1 
+    point to your score, "x2" which doubles your score earned for the turn, "shuffle" 
+    which shuffles all the cells on the board that aren't part of either players 
+    blob and "bomb" which removes 5 cells from the opponent's blob) involved and 
+    there is a one player version where you can play against the computer.
+
+Competitive Analysis: 
+    A similar game to Filler is Othello(Reversi). Each reversi piece has a black 
+    side and a white side. A player places a piece on the board with their color 
+    facing up and it has to be touching an opponent's piece. All of the opponent's 
+    pieces between the player's pieces are  turned over to become the player's color. 
+    The object of the game is to get the most pieces with your color facing up 
+    before there are no moves left. My project is similar to Othello because 
+    both games have the same objective but different ways of getting to the 
+    objective. Both projects are grid based. The way the computer thinks in each 
+    game would be similar because when making a move it plans a few moves ahead 
+    to see which path would get them the most cells. In Othello the opponent's 
+    moves matter a lot more when thinking about your own move, while in Filler 
+    until the end when there are only a few squares left the opponent's move 
+    doesn't matter as much besides affecting your color options. While we have to 
+    mainly consider how to gain the most cells in Filler, Othello requires thinking 
+    about stealing the opponent's cells and guessing how they will steal yours.
+    Another similar game to Filler is Sudoku. They are both grid based. While the 
+    objectives for the games are very different, and Sudoku is essentially one 
+    player, filling up the board has similar logic. For sudoku the number that 
+    goes in each cell depends entirely on the numbers in the cells around it. 
+    In filler, turns are made based on the cells around you, and the strategy is 
+    to consider the cells around you to gain more cells and win. Both games have 
+    a set of options to choose from for each move. In sudoku we check the legality 
+    of each move, while in filler we check the score gained by each move. Because 
+    sudoku is one player, AI wouldn’t involve thinking about the other players 
+    move either, while Filler has to consider that for future options.
+
+Structural Plan: 
+    The main file where the game runs will be called filler.py and all it has is
+     the FillerGame Modal App class that defines all the modes. I will have a 
+     separate file for each mode (twoplayer.py, easy.py, medium.py,hard.py,helper.py,
+     gameover.py). Because most of the code will be the same for all the modes I have 
+     several files with code that all the modes share. creatingBoard.py has the 
+     code for drawing the board with all the options, because this is the same in 
+     every class. I also have a file for the Player object (player.py). I will
+     have another file which evaluates actions (actions.py) like powerups and 
+     updating the timer because this is the same in every mode too.
+
+Algorithmic Plan: 
+    The trickiest part of the project is creating a computer player for the one 
+    player hard mode. Because I have difficulties in the one player mode the computer
+     will get smarter (start considering more aspects when making a move) as the 
+     difficulty gets higher. In the easy mode the computer will just randomly pick
+    a color out of the options, in medium mode the computer will pick a color
+    based on the cells surrounding it's blob and in hard mode the computer will 
+    think about various things.
+
+#########################################################  
+# Algorithmic plan for computer moves in hard mode
+#########################################################  
+# First: Figure out the opponent's most likely next move 
+#   - do this by looping through all of the bordering cells for the opponent's 
+blob and keeping #track of  the color that occurs the most
+#
+# Second: go through every color option and keep track of a score for each option 
+#   - do this by looping through given options
+#  
+# Third: for each color option add to score based on how many points you would 
+receive just on that turn if color  was picked. do not include points gained by 
+powerups
+#   - do this by looping through bordering cells and checking how many cells are 
+of the option #color
+#  
+# Fourth: for each color option make a new set of options for computers next turn
+#   - do this by including all the color options besides the current color option 
+and the players #next most likely option
+#
+# Fifth: for each color in the new set of options add to score based on how many 
+points you would receive just on # that turn if color was picked. do not include 
+points gained by powerups
+#   - do this by assuming the current option we are on was picked and now looping 
+through the #new bordering cells and checking how many cells are of the new option 
+color
+#
+# Sixth: for any power up that was added on the first turn for each option add points 
+based on #how powerful the power up is
+#   - (+1) gets one point (remove) gets two points (shuffle) gets zero points (x2) 
+gets four points #(skip) gets three points (bomb) gets five points
+#
+# Seventh: compare the score for all options and pick the option with the highest 
+score
+###################################################
+I will use a mini max algorithm and consider powerups.
+
+
+Timeline Plan: 
+Sunday - Make board that functions as a normal game not including powerups
+Monday - Add functioning powerups and finish logic for two player mode. 
+Finish design docs. Finish helper mode display, game over mode display and 
+powerup logos. Separate code that can be used in the one player modes into different 
+files
+Tuesday - Finish logic for hard one player mode
+Wednesday - Finish logic for easy and medium one player mode
+Thursday - Fix any bugs and glitches in the logic for all modes. Make it look 
+good and make it user friendly. Make video demo
+Friday - Edit video demo and prepare for live demo
+
+Version Control Plan: 
+At the end of every sitting that I'm working on the term project I will save it 
+to my desktop and compress it, then go to Google Drive and upload it on there 
+with the date and time it was uploaded .
+[Picture in versioncontrol.png]
+
+Storyboard:
+[Picture in storyboard.png]
+
+TP2 UPDATE:
+Structural Plan: Instead of adding a separate file for shared code I added all the 
+code that is required for each mode to work in the player class. Because the easy 
+mode is picking randomly it wasn’t very fun to play so I’m scrapping medium mode 
+and making my implementation for medium mode easy mode. There is also a separate 
+gameover mode for each play mode. 
+Algorithmic Plan: I am still using minimax to pick an option for the computer 
+in hard mode, but instead of the rules I described above I’m running a simulation 
+of the game that considers powerups and scores and cells overtaken. I am also adding 
+alpha beta pruning so I can make the depth 4 without the computer being too slow.
+
+TP3 UPDATE:
+Structural Plan: I have added a users.txt file in the folder that has a list of
+usernames and their high scores in them. There is a function to sign up or log in
+now before you can play. If you beat the hard computer for the first time you're
+added to the leaderboard with your time displayed, if you beat your already 
+recorded time your position can change on the leaderboard

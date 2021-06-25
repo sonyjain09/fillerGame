@@ -1,0 +1,27 @@
+cmu_112_graphics.py
+https://diderot-production.s3.amazonaws.com/media/courses_public/CMU%3APittsburgh%2C%20PA%3A15112%3ASummer-2%3A2019-20/HOMEWORKS/ch%3Ahw13/chapter_attachments/a781ddc2-d1d2-11ea-94c3-0ab634db4e5d_cmu_112_graphics.py
+
+Apple Game Pigeon Filler Game
+http://gamepigeonapp.com/
+
+minimax inspiration
+https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/
+https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-2-evaluation-function/?ref=rp
+https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-3-tic-tac-toe-ai-finding-optimal-move/?ref=rp
+https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-4-alpha-beta-pruning/?ref=rp
+https://www.youtube.com/watch?v=fInYh90YMJU
+https://www.youtube.com/watch?v=l-hh51ncgDI
+
+alpha beta pruning inspiration
+https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-4-alpha-beta-pruning/
+https://www.youtube.com/watch?v=xBXHtz4Gbdo
+
+
+
+
+
+
+
+
+
+
